@@ -127,8 +127,6 @@ export default App;
 
 ## QUICK REFERENCE
 
----
-
 ```
 npm install react-router-dom
 ```
@@ -175,5 +173,3 @@ const Navigation = () => {
 
 export default Navigation;
 ```
-
----
