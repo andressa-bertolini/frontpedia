@@ -1,4 +1,5 @@
-## Router
+# Router
+[Quick reference](#quick-reference)
 
 Install the router package
 ```
@@ -8,7 +9,30 @@ npm install react-router-dom
 > [!NOTE]
 > react-router is a library for managing routes in React applications. It allows you to define and navigate between different pages or sections of your app, and react-router-dom is a browser-specific version of this library. DOM stands for 'Document Object Model' (the HTML elements of a web application in simple words).
 
-First, let's create the navigation component. Inside the "src" folder, create a folder called "layouts"
+In the "src" folder, open the App.js file and import the react-router-dom components:
+
+```
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+```
+
+> [!NOTE]
+> Here, we are importing three main components from react-router-dom: BrowserRouter, Routes, and Route. In the part, "BrowserRouter as Router", we are simply creating an alias (Router) for the BrowserRouter.
+
+App.js should look like this:
+```
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+function App() {
+  return (
+    <div className="App">
+    </div>
+  );
+}
+
+export default App;
+```
+
+Let's create the navigation component. Inside the "src" folder, create a folder called "layouts"
 
 Inside the layouts folder, create a file called **Navigation.js**
 
@@ -20,6 +44,7 @@ import { NavLink } from "react-router-dom";
 const Navigation = () => {
     return <div>
         <NavLink exact to="/">Home</NavLink>
+        /* Other examples */
         <NavLink exact to="/about">About</NavLink>
         <NavLink exact to="/contact">Contact</NavLink>
     </div>;
@@ -46,15 +71,6 @@ const Home = () => {
 
 export default Home;
 ```
-
-Now that we've created everything we need, it's time to put it all together. In the "src" folder, open the App.js file and import the react-router-dom components:
-
-```
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-```
-
-> [!NOTE]
-> Here, we are importing three main components from react-router-dom: BrowserRouter, Routes, and Route. In the part, "BrowserRouter as Router", we are simply creating an alias (Router) for the BrowserRouter.
 
 We will need to import all the components we created, we can add comments /* layout */ and /* pages */ to better organize the project:
 
@@ -106,3 +122,58 @@ function App() {
 
 export default App;
 ```
+
+---
+
+## QUICK REFERENCE
+
+---
+
+```
+npm install react-router-dom
+```
+
+App.js
+```
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+/* Layout */
+import Navigation from './layouts/Navigation';
+/* Pages */
+import Home from './pages/Home';
+
+function App() {
+  return (
+    <div>
+      <Router>
+        <Navigation />
+
+        <Routes>
+            <Route path="/" element={<Home />} />
+            /* Other examples */
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+```
+
+layouts/Navigation.jsx
+```
+import { NavLink } from "react-router-dom";
+
+const Navigation = () => {
+    return <div>
+        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/about">About</NavLink>
+        <NavLink exact to="/contact">Contact</NavLink>
+    </div>;
+};
+
+export default Navigation;
+```
+
+---
