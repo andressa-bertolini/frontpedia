@@ -133,17 +133,16 @@ npm install react-router-dom
 
 App.js
 ```
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-/* Layout */
-import Navigation from './layouts/Navigation';
-/* Pages */
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './pages/Home';
 
 function App() {
   return (
     <div>
       <Router>
-        <Navigation />
+        <nav>
+          <NavLink exact to="/">Home</NavLink>
+        </nav>
 
         <Routes>
             <Route path="/" element={<Home />} />
@@ -157,19 +156,4 @@ function App() {
 }
 
 export default App;
-```
-
-layouts/Navigation.jsx
-```
-import { NavLink } from "react-router-dom";
-
-const Navigation = () => {
-    return <nav>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink exact to="/about">About</NavLink>
-        <NavLink exact to="/contact">Contact</NavLink>
-    </nav>;
-};
-
-export default Navigation;
 ```
