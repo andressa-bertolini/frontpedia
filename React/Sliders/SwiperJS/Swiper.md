@@ -1,11 +1,11 @@
-Install Swiper JS in your project
-https://swiperjs.com/react
+## Swiper
 
+**Installation**
 ```
-npm i swiper
+npm install swiper
 ```
 
-Import Swiper styles in *index.js*
+**index.js**
 ```
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,7 +13,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 ```
 
-*Component.jsx*
+**Swiper.jsx**
 ```
 import { Swiper, SwiperSlide } from 'swiper/react';
 
