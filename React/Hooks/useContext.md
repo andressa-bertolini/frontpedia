@@ -3,53 +3,36 @@
 Context is a way to store data and have it be accessible to components no matter where they are without having to pass it through props
 
 Step by Step
-- Create a context to store user data.
+- Create a context to store data.
 - Create a Provider that makes the context available to child components.
 - Use useContext to access data within a component.
 
-UserContext.js
+
+### Creating the context
+
+Import createContext and assign it to a const. We need to create it in a separate file because we will need to import it in all the files we use the **Provider** or the **useContext** hook
+
+context/GlobalContext.jsx
 ```
-import { createContext } from "react";
-export const UserContext = createContext();
-```
-
-The Provider supplies user data to the entire application.
-
-UserProvider.js
-```
-import { useState } from "react";
-import { UserContext } from "./UserContext";
-
-const UserProvider = ({ children }) => {
-  const [user, setUser] = useState("Peter");
-
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-export default UserProvider;
-
+import { createContext } from 'react';
+export const GlobalContext = createContext();
 ```
 
-Now, we wrap the entire application with the UserProvider so that the components have access to the context.
-
-App.js
+The Provider supplies data to the entire application. Now, we wrap the entire application with the provider so that the components have access to the context. Add the state you want to access in the value attribute
 ```
-import "./App.css";
-import UserProvider from "./UserProvider";
-import UserProfile from "./UserProfile";
+import { useState } from 'react';
+import { GlobalContext } from './context/GlobalContext';
+import ShowLanguage from './components/ShowLanguage';
 
 function App() {
+  const [language, setLanguage] = useState('en');
+
   return (
-    <UserProvider>
-      <div className="App">
-        <h1>Context API em ação! 🚀</h1>
-        <UserProfile />
-      </div>
-    </UserProvider>
+    <div className="App">
+      <GlobalContext.Provider value={{language}}>
+        <ShowLanguage />
+      </GlobalContext.Provider>
+    </div>
   );
 }
 
@@ -58,16 +41,20 @@ export default App;
 
 Now, let's access the context without having to pass props!
 
-UserProfile.js
+components/ShowLanguage.jsx
 ```
-import { useContext } from "react";
-import { UserContext } from "./UserContext";
+import { useContext } from 'react';
+import { GlobalContext } from "../context/GlobalContext";
 
-const UserProfile = () => {
-  const { user } = useContext(UserContext); // Pegando o usuário do contexto
+const ShowLanguage = () => {
 
-  return <h2>Usuário logado: {user}</h2>;
-};
+  const { language } = useContext(GlobalContext);
+  return (
+    <div>
+        Language: {language}
+    </div>
+  )
+}
 
-export default UserProfile;
+export default ShowLanguage
 ```
