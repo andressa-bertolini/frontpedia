@@ -15,7 +15,7 @@ export default function App() {
 }
 ```
 
-
+```
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
@@ -62,3 +62,4 @@ export default function FetchExample2() {
     </div>
   );
 }
+```
