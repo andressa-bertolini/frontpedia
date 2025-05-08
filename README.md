@@ -4,4 +4,4 @@ This repository is my personal library for front-end development tutorials and c
 
 Feel free to browse through, and perhaps you’ll find something useful as well!
 
-<img src="illustration.png" width="300"/>
+<img src="https://raw.githubusercontent.com/andressa-bertolini/frontpedia/main/illustration.png" width="300"/>
